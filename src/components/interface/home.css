@@ -1,0 +1,127 @@
+
+@media (max-width: 1024px) {
+  .homeContainer {
+    padding: 0px;
+    text-align: center;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  } 
+  .cards{
+    padding: 100px;
+  }
+  .latest_text{
+   font-size: 1.5rem;
+  }
+
+  .heading{
+    font-size: 4.3rem !important;
+  }
+  .sub-heading{
+    font-size: 1.5rem !important;
+  }
+
+  .cards a:nth-child(n+3){
+    display: none ;  
+    
+  }
+  .highlightsSection{
+    margin: 0px 0px;
+  }
+  .footer{
+   margin-top: 70PX !important;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+  .homeContainer {
+    margin-top: 0px !important;
+    padding: 0px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+
+    
+  }
+  .heading{
+    font-size: 34px !important;
+  }
+  .sub-heading{
+    font-size: 20px !important;
+  }
+  .latest_text{
+    font-size: 1rem ;
+  }
+
+  .cards {
+    padding:0px;
+    flex-direction: row;
+    margin-bottom: 0px !important;
+    gap: 50px !important;
+  }
+  .cards div:nth-child(n+2){
+    display: none;
+  }
+  .highlightsSection{
+    margin: 0px !important;
+  }
+  .footer{
+    padding: 10px !important;
+    margin-top: 40px !important;
+  }
+  .footer .ptext{
+    font-size: 1rem !important;
+  }
+  .footer .ptext a{
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .homeContainer {
+    padding: 0px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+
+    font-size: 0.1rem ;
+  }
+  .heading{
+    font-size: 1rem !important;
+  }
+
+  .sub-heading{
+    margin: 20px 0px !important;
+  }
+  .cards {
+    padding: 0px;
+    gap: 30px !important;
+  }
+  .cards a:nth-child(n+3){
+    display: none !important;
+  }
+  .card > h3{
+    font-size: 0.8rem !important;
+  }
+  .card p{
+    font-size: 0.8rem !important;
+  }
+
+
+  .cards a div{
+    width: 200px !important;
+  }
+  .sub-heading{
+    font-size: 13px !important;
+    margin-bottom: 0px;
+  }
+  .featuresection{
+    margin: 0px !important;
+  }
+  .featuretext{
+    display: none !important;
+  }
+  .footer{
+    padding: 0px !important;
+    font-size: 0.5rem !important;
+  }
+}
+

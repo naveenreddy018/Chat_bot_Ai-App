@@ -1,0 +1,183 @@
+.about-gemini-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    align-items: center;
+    background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+.video-section {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.video-list {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    gap: 15px;
+}
+
+.video-card {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(255, 165, 0, 0.6);
+    background-color: #444;
+}
+
+.video-card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.video-card-title {
+    font-size: 16px;
+    color: #ffa726;
+    text-align: center;
+}
+
+.selected-video-section {
+    width: 70%;
+}
+
+.selected-video-container {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.selected-video {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.text-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.heading {
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.sub-heading {
+    font-size: 24px;
+    color: #ffa726;
+    margin-top: 20px;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+}
+
+
+@media (max-width: 1024px) {
+    .video-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .video-list {
+        width: 100%;
+    }
+
+    .selected-video-section {
+        width: 100%;
+    }
+
+    .text-container {
+        padding: 15px;
+    }
+
+    .heading {
+        font-size: 28px;
+    }
+
+    .sub-heading {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .video-card {
+        width: 45%;
+    }
+
+    .heading {
+        font-size: 24px;
+    }
+
+    .sub-heading {
+        font-size: 20px;
+    }
+
+    .text-container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 425px) {
+    .about-gemini-container {
+        padding: 15px;
+    }
+
+    .video-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .video-card {
+        width: 100%;
+    }
+
+    .heading {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .sub-heading {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .features-list {
+        padding-left: 10px;
+    }
+
+    .text-container {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,18 @@
+.app-container1{
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  background-color: white;
+}
+
+body{
+  background-color: white;
+}
+.toggle_chat{
+  position: absolute;
+  top: 30px;
+  left: 60%;
+  font-size: 30px;
+  /* background-color: black; */
+  border-radius: 50%;
+}
