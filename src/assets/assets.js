@@ -19,6 +19,8 @@ import toggle from "./toggle.png"
 import videos1 from "./videos1.mp4"
 import videos2 from "./videos2.mp4"
 import videos3 from "./vidoes3.mp4"
+import googllogin from "./googleai.avif"
+import unnamed from "./unnamed.webp"
 
 
 
@@ -43,5 +45,7 @@ export const assets = {
     toggle,
     videos1,
     videos2,
-    videos3
+    videos3,
+    googllogin,
+    unnamed
 }

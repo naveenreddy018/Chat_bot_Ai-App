@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Routes>
 
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={ <Register />} />
  
         <Route path="/about" element={<AboutGeminiAI/>} />
 

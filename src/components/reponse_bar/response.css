@@ -84,6 +84,13 @@ a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.prompt-display{
+        padding: 0px !important;
+    margin: 0px;
+}
+.response-display{
+    padding:  0px !important;
+}
 
 .main .cards {
     display: grid;
@@ -163,6 +170,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 20vh;
     gap: 8px;
 }
 
@@ -172,6 +180,8 @@ a:hover {
     background-color: #3498db;
     animation: slide 1.5s infinite ease-in-out;
     border-radius: 5px;
+    position: relative;
+    top : 50%;
 }
 
 .bar:nth-child(1) {
@@ -355,6 +365,9 @@ gap: 10px;
 
 
 @media (max-width: 426px) {
+    .response-container{
+        flex: 1;
+    }
 
     .header {
         margin: 0px;
@@ -369,6 +382,10 @@ gap: 10px;
        font-size: 1rem;
 
     }
+    .modal-container .modal-dialog .modal-content{
+       display: none;
+    }
+  
     .nav-name a{
       position: relative;
       left: 30px;
@@ -407,14 +424,19 @@ gap: 10px;
     .footer {
         margin: 0px 15px;
         margin-bottom: 40px;
+        font-size: 19px;
+        
     }
 
     .footer .input-bar input {
-        padding: 8px;
-        font-size: 19px;
+          padding: 0 !important;
+        font-size: 16px;
         margin: 0px 30px;
-    }
 
+    }
+     .send-icon img{
+        width: 25px !important;
+     }
     .additonal-icons {
         padding: 0px;
         gap: 10px;

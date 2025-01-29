@@ -33,9 +33,9 @@ function App3() {
     </div>
   );
 }
-
 function AppNavbar({ toggleTheme, isDarkMode }) {
   const [profile, setProfile] = useState(false);
+  const [open, setIsOpen] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -62,59 +62,125 @@ function AppNavbar({ toggleTheme, isDarkMode }) {
             <Navbar.Brand as={Link} className="gemini-name" style={styles.navBrand}>
               Gemini Ai
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" style={styles.hamburger}>
-              <span className="custom-bar"></span>
-              <span className="custom-bar"></span>
-              <span className="custom-bar"></span>
-            </Navbar.Toggle>
-            <Navbar.Collapse id="basic-navbar-nav" className="hamburger" style={styles.navContainer}>
-              <Nav className="ml-auto auto" style={styles.navItems}>
-                <Nav.Item>
-                  <Link to="/auth" className="nav-link" style={styles.navLink}>
-                    Home
-                  </Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link to="/chat" className="nav-link" style={styles.navLink}>
-                    Chat
-                  </Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link to="/about" className="nav-link" style={styles.navLink}>
-                    About
-                  </Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Button variant="link" className="dropdown-menu" style={styles.navLink} onClick={handleProfile}>
-                    <img
-                      src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001882.png"
-                      width="60px"
-                      alt="User Avatar"
-                    />
-                  </Button>
 
-                  {profile && (
-                    <div className="dropdown-menu" style={styles.profileMenu}>
-                      <Button variant="link" className="dropdown-item" onClick={handleLogout} style={styles.profileItem}>
-                        Logout
-                      </Button>
-                    </div>
-                  )}
-                </Nav.Item>
-              </Nav>
-              <Button
-                variant={isDarkMode ? 'outline-light' : 'outline-dark'}
-                title="Toggle button"
-                onClick={toggleTheme}
-                className="toggle"
-                style={styles.toggleButton}
-              >
-                {isDarkMode ? '🌙' : '🌞'}
-              </Button>
-            </Navbar.Collapse>
+            {/* Hamburger Icon (Nav Toggle) */}
+            <div className="nav-toggle" onClick={() => setIsOpen(!open)}>
+              <span className={`bar ${open ? 'open' : ''}`}></span>
+              <span className={`bar ${open ? 'open' : ''}`}></span>
+              <span className={`bar ${open ? 'open' : ''}`}></span>
+            </div>
+
+            {/* Mobile Navigation */}
+            <div className={`mobile-nav ${open ? 'open' : ''}`} style={styles.mobileNav}>
+              <Navbar.Collapse id="basic-navbar-nav" className="hamburger" style={styles.navContainer}>
+                <Nav className="ml-auto auto" style={styles.navItems}>
+                  <Nav.Item>
+                    <Link to="/auth" className="nav-link" style={styles.navLink}>
+                      Home
+                    </Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Link to="/chat" className="nav-link" style={styles.navLink}>
+                      Chat
+                    </Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Link to="/about" className="nav-link" style={styles.navLink}>
+                      About
+                    </Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Button variant="link" className="dropdown-menu" style={styles.navLink} onClick={handleProfile}>
+                      <img
+                        src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001882.png"
+                        width="60px"
+                        alt="User Avatar"
+                      />
+                    </Button>
+
+                    {profile && (
+                      <div className="dropdown-menu" style={styles.profileMenu}>
+                        <Button variant="link" className="dropdown-item" onClick={handleLogout} style={styles.profileItem}>
+                          Logout
+                        </Button>
+                      </div>
+                    )}
+                  </Nav.Item>
+                </Nav>
+                <Button
+                  variant={isDarkMode ? 'outline-light' : 'outline-dark'}
+                  title="Toggle button"
+                  onClick={toggleTheme}
+                  className="toggle"
+                  style={styles.toggleButton}
+                >
+                  {isDarkMode ? '🌙' : '🌞'}
+                </Button>
+              </Navbar.Collapse>
+            </div>
           </Container>
         </Navbar>
       )}
+      <style>
+        {`
+          @media (max-width: 425px) {
+            /* Display the hamburger icon */
+            .nav-toggle {
+              display: flex;
+              flex-direction: column;
+              cursor: pointer;
+            
+              z-index: 1001;
+            }
+
+            /* Styling for each bar */
+            .bar {
+              background-color: white;
+              width: 30px;
+              height: 4px;
+              margin: 5px 0;
+              transition: 0.3s ease-in-out;
+            }
+
+            /* When open, apply transformation to the bars */
+            .bar.open:nth-child(1) {
+              transform: rotate(45deg);
+              position: relative;
+              top: 8px;
+            }
+            .bar.open:nth-child(2) {
+              opacity: 0;
+            }
+            .bar.open:nth-child(3) {
+              transform: rotate(-45deg);
+              position: relative;
+              bottom: 8px;
+            }
+
+            /* Mobile nav container */
+            .mobile-nav {
+            display : "block"
+              position: absolute;
+              top: 0;
+              right: -100%;
+              width: 100%;
+              height: 0vh;
+              background: black;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              transition: transform 0.3s ease-in-out;
+              z-index: 999;
+            }
+
+            /* Slide in the mobile menu when open */
+            .mobile-nav.open {
+              transform: translateX(100%);
+            }
+          }
+        `}
+      </style>
     </>
   );
 }
@@ -213,7 +279,7 @@ const styles = {
     padding: '10px 15px',
     fontSize: '1.5rem',
     backdropFilter: 'blur(10px)',
-    backgroundColor: 'red',
+    backgroundColor: 'gray',
     fontFamily: 'Times New Roman, Times, serif',
     fontWeight: 800,
   },

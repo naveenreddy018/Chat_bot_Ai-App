@@ -5,7 +5,7 @@ import './slide.css';
 
 import { Array } from '../reponse_bar/response.jsx';
 import { Link } from 'react-router-dom';
-
+console.log(Array)
 
 function Slide_Bar() {
   const [menu, setMenu] = useState(false);
@@ -71,9 +71,11 @@ function Slide_Bar() {
                   <div className="recent-history">
                     {
                       Array.map((item, index) => (
-                        <>
-                          <p key={index}>{item}</p>
-                        </>
+                
+ <p  key={index}>{item}</p>
+                  
+                        
+                        
 
                       ))
                     }
@@ -91,7 +93,7 @@ function Slide_Bar() {
           <ImageComponent
             src={assets.history_icon}
             style={{
-              width: 30,
+              width: 30, 
             }}
           />
           {menu && <Link to="/history">History</Link>}

@@ -1,36 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { assets } from '../../assets/assets';
+import { Appa } from '../Notify/notify';
 
 export const Username = [];
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [loginmessage, setloginmessage] = useState(""); 
+
 
     const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
-            navigate('/profile'); 
+            navigate('/profile');  
         }
-    }, []);
+    }, [navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (username === "" || password === "") {
-            setError("Please enter both username and password.");
-            return;
-        }
 
-        setError('');
+    
+        setTimeout(() => {
+            setloginmessage("");  
+        }, 3000);  
+
+    
+        if (username === "" || password === "") {
+            setloginmessage("Please enter both username and password.");
+            return; 
+        }
 
         Username.push(username);
 
         try {
-            const res = await fetch("https://render-back-end-4.onrender.com/login", {
+            const res = await fetch("https://render-back-end-6.onrender.com/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password })
@@ -40,35 +48,44 @@ const Login = () => {
 
             if (res.ok) {
                 localStorage.setItem("token", JSON.stringify(data.token1));
-                navigate('/profile');
-            } else {
-                setError(data.message || 'Login failed');
-            }
+                setloginmessage(`Login successful! Redirecting...`);
 
+                setTimeout(() => {
+                    navigate('/profile');
+                }, 3000);
+            } else {
+                setloginmessage(data.message || "Login failed");
+            }
         } catch (error) {
-            setError("An error occurred while logging in.");
+            setloginmessage("An error occurred while logging in.");
             console.error("Login error:", error);
         }
-    };
 
-    const handleRegisterClick = () => {
-        navigate("/register");
+    
+        // if (clickCount >= 4) {
+        //     setClickCount(0);  
+        // }
     };
 
     const handleGuestLogin = () => {
         Username.push("guest");
-        navigate('/auth');
+        navigate('/auth'); 
+    };
+
+    const handleRegisterRedirect = () => {
+        navigate("/register");  
     };
 
     return (
         <div style={styles.container}>
             <form id="login" onSubmit={handleSubmit} style={styles.form}>
+                <h2 style={styles.header}>Login to Gemini AI</h2>
                 <label htmlFor="name" style={styles.label}>Username</label>
                 <input 
                     id="name"
                     type="text"
                     value={username}
-                    placeholder='ENTER USERNAME'
+                    placeholder="Enter Username"
                     onChange={(e) => setUsername(e.target.value)}
                     style={styles.input}
                 />
@@ -76,22 +93,25 @@ const Login = () => {
                 <input 
                     id="pass"
                     type="password"
-                    placeholder='ENTER PASSWORD'
+                    placeholder="Enter Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     style={styles.input}
                 />
                 <input type="submit" value="Login" style={styles.submitBtn} />
+                
+                <div style={styles.loginRedirectContainer}>
+                    <p style={styles.pTag}>Don't have an account? 
+                        <span onClick={handleRegisterRedirect} style={styles.registerLink}> Register here</span>
+                    </p>
+                </div>
             </form>
 
-            {error && <div style={{color : "red", fontSize : "20px"}}>{error}</div>}
+            {/* Display the login message as toast */}
+            {loginmessage && <Appa action={loginmessage} />}
 
-            <div style={styles.buttonContainer}>
-                <button onClick={handleRegisterClick} style={styles.button}>Register</button>
-            </div>
-
-            <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                <p style={styles.pTag} > LOGIN AS GUEST: </p>
+            <div style={styles.guestLoginContainer}>
+                <p style={styles.pTag}>Login as Guest:</p>
                 <button onClick={handleGuestLogin} style={styles.guestButton}>Guest User</button>
             </div>
         </div>
@@ -101,80 +121,85 @@ const Login = () => {
 const styles = {
     container: {
         display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
         height: '100vh',
-        color: '#fff',
+        backgroundColor: '#f4f6f9',
         padding: '20px',
-        flexDirection: 'column', 
-        backgroundImage: 'url(https://images.unsplash.com/photo-1636690424408-4330adc3e583?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)', // Replace with your image URL
+        backgroundImage: "url('https://t3.ftcdn.net/jpg/03/55/60/70/360_F_355607062_zYMS8jaz4SfoykpWz5oViRVKL32IabTP.jpg')",
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        zIndex: "-10000"
     },
     form: {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '300px',
+        width: '100%',
+        maxWidth: '400px',
+        backgroundColor: '#fff',
         padding: '30px',
-        borderRadius: '8px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         marginBottom: '20px',
-        backgroundColor: 'rgba(255, 255, 255, 0.15)',
-        backdropFilter: 'blur(10px)', 
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+    },
+    header: {
+        textAlign: 'center',
+        fontSize: '24px',
+        marginBottom: '20px',
+        color: '#3f51b5',
     },
     label: {
-        marginBottom: '10px',
-        fontSize: '18px',
-        fontWeight: 'bold',
-        color: 'red',
+        fontSize: '16px',
+        marginBottom: '8px',
+        display: 'block',
+        fontWeight: '500',
     },
     input: {
-        padding: '12px',
+        width: '100%',
+        padding: '10px',
         marginBottom: '15px',
-        fontSize: '14px',
         borderRadius: '5px',
-        border: '1px solid #555',
-        backgroundColor: '#333',
-        color: '#fff',
+        border: '1px solid #ddd',
     },
     submitBtn: {
+        width: '100%',
         padding: '12px',
-        fontSize: '16px',
-        backgroundColor: '#00A1E1',
-        color: '#fff',
+        backgroundColor: '#4CAF50',
+        color: 'white',
         border: 'none',
         borderRadius: '5px',
         cursor: 'pointer',
-        transition: 'background-color 0.3s ease',
+        fontSize: '16px',
+        fontWeight: 'bold',
     },
-    buttonContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        width: '300px', 
-        marginTop: '20px',
-    },
-    button: {
-        padding: '12px ',
+    loginRedirectContainer: {
         textAlign: 'center',
-        fontSize: '16px',
-        backgroundColor: '#FF5722',
-        color: '#fff',
+        marginTop: '15px',
+    },
+    pTag: {
+        fontSize: '1.3rem',
+        marginBottom: '10px',
+        fontWeight: "500",
+        color: "blue"
+    },
+    registerLink: {
+        color: '#3f51b5',
+        cursor: 'pointer',
+        textDecoration: 'underline',
+    },
+    guestLoginContainer: {
+        marginTop: '20px',
+        textAlign: 'center',
+    },
+    guestButton: {
+        padding: '12px 20px',
+        backgroundColor: '#e91e63',
+        color: 'white',
         border: 'none',
         borderRadius: '5px',
         cursor: 'pointer',
-        transition: 'background-color 0.3s ease',
-        width: '68%', 
+        fontSize: '16px',
+        fontWeight: 'bold',
     },
-    pTag : {
-        fontSize:"1.5rem",
-        padding : "10px",
-        color : "white"
-    },
-    guestButton : {
-        backgroundColor : "#4CAF50",
-        padding : "10px",
-        color:'#FFFFFF',
-        borderRadius : "5px"
-    }
 };
 
 export default Login;

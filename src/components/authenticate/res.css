@@ -144,34 +144,66 @@
     }
   
   
-   .hamburger {
+   /* .hamburger {
     display: none;
     background-color: red;
     position: absolute; 
-    top: 60px !important; 
+    padding: 30px !important;
+    top: 20px !important; 
     right: 0;
     z-index: 1000;
     flex-direction: column;
+    animation: slide_ 1s  ease-in-out infinite right ;
+    position: absolute;
+    display: block;
+    top:10%;
+    left : 50%;
+  } */
+ 
+   .hamburger{
+    position: absolute;
+    display: block;
+    top:10%;
+    left : 40%;
+    height: 100vh;
+
+   } 
+
+
+  @keyframes slide_ {
+    0%,100%{
+            transform: translateX(0%);
+    }
+    50%{
+      transform: translateX(-100%);
+    }
+    
   }
-  
+  .nav-toggle{
+    width: 50% !important;
+    position: relative !important;
+    left: 85%;
+    top : -20% !important;
+  }
   
   .ml-auto{
     display: flex;
     flex-direction: column;
     gap: 30px;
     position:relative;
-    top: px;
+    height: 54vh;
+    padding: 50px !important;
+
+  
+    backdrop-filter: blur(30px);
+    background: rgba(255, 255, 255, 0.2) !important;
   }
    .gemini-name{
     margin-top: 30px;
    }
   
-   .navbar-toggler{
-    display: block;
-    margin-left: auto;
-    position: relative; 
-   }
-  
+ 
+/*   
    .navbar-toggler:hover + .hamburger {
     display: block !important;
     display: flex !important;
@@ -181,7 +213,7 @@
     margin-left: auto;
     padding: 0px !important;
   
-   }
+   } */
   .gemini-name{
     position: relative;
     top: 30px;
@@ -196,11 +228,11 @@
       font-size: 16px;
     }
   
-    .navLink {
-      font-size: 5px !important;
+    .nav-link {
       padding: 8px 12px;
       margin: 5px 0;
-      color: red !important;
+      color: white !important;
+      font-size: 1.6rem !important; 
     }
   
     .projectContent {
@@ -222,3 +254,4 @@
       right: 10px;
     }
   }
+

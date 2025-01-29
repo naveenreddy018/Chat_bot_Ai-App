@@ -71,6 +71,7 @@ const styles = {
     textAlign: 'center',
     fontFamily: 'Arial, sans-serif',
     marginTop:"40px",
+
   },
   heading: {
     fontSize: '46px',

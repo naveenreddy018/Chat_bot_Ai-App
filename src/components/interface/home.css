@@ -97,7 +97,7 @@
   }
   .cards a:nth-child(n+3){
     display: none !important;
-  }
+  } */
   .card > h3{
     font-size: 0.8rem !important;
   }
