@@ -130,6 +130,7 @@ function AppNavbar({ toggleTheme, isDarkMode }) {
               flex-direction: column;
               cursor: pointer;
               z-index: 1001;
+    margin-bottom: 6px
             }
 
             /* Styling for each bar */
@@ -150,7 +151,7 @@ function AppNavbar({ toggleTheme, isDarkMode }) {
               position: absolute;
               top: 0;
               left: 0;
-              right: -50%;
+              right: -60%;
               width: 100%;
               height: 100vh;
               display: ${open ? 'block' : 'none'};
@@ -199,6 +200,7 @@ const styles = {
 
   Container: {
     padding: '0px',
+    width: "100%",
   },
 
   navContainer: {
@@ -269,7 +271,7 @@ const styles = {
     backdropFilter: 'blur(10px)',
     backgroundColor: 'gray',
     fontFamily: 'Times New Roman, Times, serif',
-    fontWeight: 800,
+    fontWeight: "800",
   },
 
   '@media (max-width: 768px)': {

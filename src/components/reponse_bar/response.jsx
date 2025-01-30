@@ -63,7 +63,7 @@ function Response_Bar() {
       setConversation((prev) => [...prev, { prompt: currentPrompt, response: "" }]);
   
       let retryCount = 0;
-      const maxRetries = 3;
+      const maxRetries = 10;
   
       const fetchResponse = async () => {
         try {
