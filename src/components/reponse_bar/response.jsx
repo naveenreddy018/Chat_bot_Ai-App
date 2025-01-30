@@ -49,6 +49,8 @@ function Response_Bar() {
     setProfilePhoto(assets.user_icon);
   };
 
+  const [showRetry, setShowRetry] = useState(false);
+
   const handleSend = async (currentPrompt) => {
     if (currentPrompt.trim() && !requestInProgress) {
       setPrompt("");
@@ -56,37 +58,62 @@ function Response_Bar() {
       setDisplay(true);
       setRecent_items(currentPrompt);
       setRequestInProgress(true);
-
-      setConversation((prev) => [...prev, { prompt: currentPrompt, response: "" }]);
-
-      try {
-        const res = await fetch("https://render-back-end-7.onrender.com/prompt", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt: currentPrompt }),
-        });
-
-        const responseData = await res.json();
-        setLoading(false);
-             
-
+      setShowRetry(false); // Hide retry button initially
   
-       Array.push(currentPrompt);
-        setConversation((prev) =>
-          prev.map((entry) =>
-            entry.prompt === currentPrompt ? { ...entry, response: responseData.response } : entry
-        
-          )
-        );
-      } catch (error) {
-        console.error("Error:", error.message);
-      } finally {
-        setRequestInProgress(false);
-      }
+      setConversation((prev) => [...prev, { prompt: currentPrompt, response: "" }]);
+  
+      let retryCount = 0;
+      const maxRetries = 3;
+  
+      const fetchResponse = async () => {
+        try {
+          const res = await fetch("http://localhost:3001/prompt", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ prompt: currentPrompt }),
+          });
+  
+          if (!res.ok) {
+            throw new Error("Failed to fetch AI response");
+          }
+  
+          const responseData = await res.json();
+          setLoading(false);
+          setConversation((prev) =>
+            prev.map((entry) =>
+              entry.prompt === currentPrompt ? { ...entry, response: responseData.response } : entry
+            )
+          );
+        } catch (error) {
+          console.error("Error:", error.message);
+          if (retryCount < maxRetries) {
+            retryCount++;
+            console.log(`Retrying... Attempt ${retryCount}`);
+            setTimeout(fetchResponse, 2000);
+          } else {
+            setLoading(false);
+            setShowRetry(true); 
+            setConversation((prev) => [
+              ...prev,
+              { prompt: currentPrompt, response: "Sorry, there was an error. Please try again later." }
+            ]);
+          }
+        } finally {
+          setRequestInProgress(false);
+        }
+      };
+  
+      fetchResponse();
     }
   };
+  
+  const handleRetry = () => {
+    setShowRetry(false);
+    handleSend(prompt); 
+  };
+  
 
   const handleCardClick = (cardText) => {
     if (!requestInProgress) {
