@@ -427,15 +427,18 @@ gap: 10px;
         font-size: 19px;
         
     }
+    .footer .input-bar{
+        padding: 15px !important;
+    }
 
     .footer .input-bar input {
           padding: 0 !important;
-        font-size: 16px;
+        font-size: 20px;
         margin: 0px 30px;
 
     }
      .send-icon img{
-        width: 25px !important;
+        width: 35px !important;
      }
     .additonal-icons {
         padding: 0px;

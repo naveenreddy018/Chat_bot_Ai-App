@@ -24,7 +24,7 @@ function Slide_Bar() {
   
   const getMinWidth = () => {
     if (windowWidth <= 468) {
-      return menu ? '55vw' : '0vw';
+      return menu ? '35vw' : '0vw';
     } else if (windowWidth <= 768) {
       return menu ? '25vw' : '0vw';
     } else {

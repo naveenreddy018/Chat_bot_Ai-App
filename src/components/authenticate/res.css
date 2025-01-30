@@ -138,27 +138,13 @@
       min-height: 0;
     }
     .navbar{
-    padding: 5px !important;
+    padding: 0px !important;
       background-color: #1F2937 !important;
       color: white !important; 
+      margin:  0px ;
     }
-  
-  
-   /* .hamburger {
-    display: none;
-    background-color: red;
-    position: absolute; 
-    padding: 30px !important;
-    top: 20px !important; 
-    right: 0;
-    z-index: 1000;
-    flex-direction: column;
-    animation: slide_ 1s  ease-in-out infinite right ;
-    position: absolute;
-    display: block;
-    top:10%;
-    left : 50%;
-  } */
+ 
+ 
  
    .hamburger{
     position: absolute;
@@ -169,7 +155,7 @@
 
    } 
 
-
+/* 
   @keyframes slide_ {
     0%,100%{
             transform: translateX(0%);
@@ -178,19 +164,20 @@
       transform: translateX(-100%);
     }
     
-  }
+  } */
   .nav-toggle{
-    width: 50% !important;
+    width: 30% !important;
     position: relative !important;
-    left: 85%;
-    top : -20% !important;
+    left: 65% !important;
+    margin-bottom: 6px;
   }
   
   .ml-auto{
     display: flex;
     flex-direction: column;
     gap: 30px;
-    position:relative;
+    position:absolute !important;
+    left: 0px;
     height: 54vh;
     padding: 50px !important;
 
@@ -203,21 +190,17 @@
    }
   
  
-/*   
-   .navbar-toggler:hover + .hamburger {
-    display: block !important;
-    display: flex !important;
-    margin-top: -50px;
-    background-color:pink;
-  
-    margin-left: auto;
-    padding: 0px !important;
-  
-   } */
+ .dropdown-menu img{
+  position: absolute !important;
+  right : 10%;
+  top: 0;
+ }
   .gemini-name{
-    position: relative;
+    position: relative !important;
     top: 30px;
-    left: 50px;
+    left: -5% !important;
+    padding: 0px !important;
+    margin-top: 0px !important;
   }
   
     .navbar {

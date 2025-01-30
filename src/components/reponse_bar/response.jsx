@@ -60,7 +60,7 @@ function Response_Bar() {
       setConversation((prev) => [...prev, { prompt: currentPrompt, response: "" }]);
 
       try {
-        const res = await fetch("https://render-back-end-6.onrender.com/prompt", {
+        const res = await fetch("https://render-back-end-7.onrender.com/prompt", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

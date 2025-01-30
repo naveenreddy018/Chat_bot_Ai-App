@@ -117,6 +117,7 @@ p:hover {
 @media (max-width: 768px) {
   .slide_container {
     padding: 0px;
+
   }
 
   .top {
@@ -146,15 +147,19 @@ p:hover {
     padding: 0px;
     /* display: none; */
  
+ 
   }
 
   .top {
     min-height: 8vh;
     padding: 0px;
+
   }
 
   .top-section {
     gap: 15px;
+
+
    
   }
 

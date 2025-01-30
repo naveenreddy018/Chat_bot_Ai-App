@@ -35,7 +35,7 @@ function App3() {
 }
 function AppNavbar({ toggleTheme, isDarkMode }) {
   const [profile, setProfile] = useState(false);
-  const [open, setIsOpen] = useState(true);
+  const [open, setIsOpen] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -57,21 +57,21 @@ function AppNavbar({ toggleTheme, isDarkMode }) {
   return (
     <>
       {!hideNavbar && (
-        <Navbar bg={isDarkMode ? 'dark' : 'light'} variant={isDarkMode ? 'dark' : 'light'} style={styles.navbar}>
+        <Navbar bg={isDarkMode ? 'dark' : 'light'} variant={isDarkMode ? 'dark' : 'light'} style={styles.navbar} >
           <Container style={styles.Container}>
             <Navbar.Brand as={Link} className="gemini-name" style={styles.navBrand}>
               Gemini Ai
             </Navbar.Brand>
 
             {/* Hamburger Icon (Nav Toggle) */}
-            <div className="nav-toggle" onClick={() => setIsOpen(!open)}>
+            <div className="nav-toggle" onClick={() => setIsOpen(!open)} >
               <span className={`bar ${open ? 'open' : ''}`}></span>
               <span className={`bar ${open ? 'open' : ''}`}></span>
               <span className={`bar ${open ? 'open' : ''}`}></span>
             </div>
 
             {/* Mobile Navigation */}
-            <div className={`mobile-nav ${open ? 'open' : ''}`} style={styles.mobileNav}>
+            <div className={`mobile-nav ${open ? 'open' : ''}`}  >
               <Navbar.Collapse id="basic-navbar-nav" className="hamburger" style={styles.navContainer}>
                 <Nav className="ml-auto auto" style={styles.navItems}>
                   <Nav.Item>
@@ -129,7 +129,6 @@ function AppNavbar({ toggleTheme, isDarkMode }) {
               display: flex;
               flex-direction: column;
               cursor: pointer;
-            
               z-index: 1001;
             }
 
@@ -142,31 +141,19 @@ function AppNavbar({ toggleTheme, isDarkMode }) {
               transition: 0.3s ease-in-out;
             }
 
-            /* When open, apply transformation to the bars */
-            .bar.open:nth-child(1) {
-              transform: rotate(45deg);
-              position: relative;
-              top: 8px;
-            }
-            .bar.open:nth-child(2) {
-              opacity: 0;
-            }
-            .bar.open:nth-child(3) {
-              transform: rotate(-45deg);
-              position: relative;
-              bottom: 8px;
+            .dropdown-menu {
+              display: ${open ? 'block' : 'none'};
             }
 
             /* Mobile nav container */
             .mobile-nav {
-            display : "block"
               position: absolute;
               top: 0;
-              right: -100%;
+              left: 0;
+              right: -50%;
               width: 100%;
-              height: 0vh;
-              background: black;
-              display: flex;
+              height: 100vh;
+              display: ${open ? 'block' : 'none'};
               flex-direction: column;
               align-items: center;
               justify-content: center;
@@ -176,7 +163,7 @@ function AppNavbar({ toggleTheme, isDarkMode }) {
 
             /* Slide in the mobile menu when open */
             .mobile-nav.open {
-              transform: translateX(100%);
+              transform: translateX(0%);
             }
           }
         `}
@@ -184,6 +171,7 @@ function AppNavbar({ toggleTheme, isDarkMode }) {
     </>
   );
 }
+
 
 const styles = {
   appContainerLight: {
@@ -310,24 +298,8 @@ const styles = {
     },
   },
 
-  '@media (max-width: 480px)': {
-    toggleButton: {
-      top: '5%',
-      right: '5%',
-      width: '40px',
-      height: '35px',
-      fontSize: '25px',
-    },
+  
 
-    navLink: {
-      fontSize: '16px',
-    },
-
-    navBrand: {
-      fontSize: '16px',
-      left: '15px',
-    },
-  },
 };
 
 export default App3;
