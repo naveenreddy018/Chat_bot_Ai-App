@@ -27,8 +27,8 @@
 
 
 .toggle_bar button :hover{
-    background-color:pink;
-    padding: 10px;
+ 
+    padding: 10px 0px;
     border-radius: 10px;
     color:  red !important;
 }
@@ -58,7 +58,7 @@ a:hover {
 }
 
 .nav-name:hover {
-    background-color: pink;
+
     padding: 10px;
     border-radius: 10px;
     color: white;
@@ -395,12 +395,13 @@ gap: 10px;
  right: -80px;
  display: none;
     }
-    .toogle_bar  button  a{
+    .toogle_bar > button > a{
         font-size: 0.5rem !important;
         position: relative !important;
         left: 500px;
-       
+        
     }
+ 
   
   .logo  div img{
     display: none;
@@ -461,6 +462,16 @@ gap: 10px;
         width: 30px;
     }
 
+    
+
+.toggle_bar button :hover{
+   background-color: white;
+    padding: 0px;
+    border-radius: 10px;
+    color:  red !important;
+    transform: scale(1.5) !important;  /* Increase size by 1.5x */
+    transition: transform 0.2s ease-in-out;
+}
     .dialog-box {
         margin: 100px  45px 15px 15px;
         padding: 0px;

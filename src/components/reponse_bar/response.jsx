@@ -68,7 +68,7 @@ function Response_Bar() {
       const fetchResponse = async () => {
         Array.push(currentPrompt)
         try {
-          const res = await fetch("https://render-back-end-7.onrender.com/prompt", {
+          const res = await fetch("https://render-back-end-8.onrender.com/prompt", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -82,7 +82,6 @@ function Response_Bar() {
   
           const responseData = await res.json();
           setLoading(false);
-          Array.push(currentPrompt)
           setConversation((prev) =>
             prev.map((entry) =>
               entry.prompt === currentPrompt ? { ...entry, response: responseData.response } : entry

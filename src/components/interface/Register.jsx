@@ -9,7 +9,7 @@ import { assets } from '../../assets/assets';
 
 export default function SignupPage() {
   const navigate = useNavigate();
-  const baseUrl = 'https://render-back-end-7.onrender.com';
+  const baseUrl = 'https://render-back-end-8.onrender.com';
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [otp, setOtp] = useState('');
@@ -52,7 +52,7 @@ export default function SignupPage() {
         }, 3000);
       } else {
         // alert(data.message || "error message ");
-        setsignupmessage(data.message)
+        setsignupmessage("Username already taken")
       }
     } catch (error) {
       // alert('An error occurred while registering.');
@@ -81,7 +81,7 @@ export default function SignupPage() {
         setOtp(data.otp)
       setOtpRequested(true);
       // alert('OTP sent successfully.');
-    setOtpRequested("otp sent")
+    setOtpRequested("Otp Sent")
       
     } catch (error) {
   setOtpRequested(error)
@@ -112,12 +112,12 @@ export default function SignupPage() {
             <Grid item xs={12}>
               <TextField fullWidth type="password" label="Password" value={password} onChange={(e) => setPassword(e.target.value)} error={!!errors.password} helperText={errors.password} />
             </Grid>
-            {otpRequested  && otpRequested === "otp sent" && (
+            {otpRequested  && otpRequested === "Otp Sent" && (
               <Grid item xs={12}>
                 <TextField fullWidth label="Enter OTP" value={otp} onChange={(e) => setOtp(e.target.value)} error={!!errors.otp} helperText={errors.otp} />
               </Grid>
             )}
-            { otpRequested != "otp sent" && (
+            { otpRequested != "Otp Sent" && (
               <Grid item xs={12}>
                 <Button fullWidth variant="contained" onClick={handleOtpClick}>
                   Get OTP
@@ -129,7 +129,7 @@ export default function SignupPage() {
             {otpRequested && <Appa  action={otpRequested} />}
             </div>
             <Grid item xs={12}>
-              { otpRequested === "otp sent" &&
+              { otpRequested === "Otp Sent" &&
                 <Button fullWidth variant="contained"  color="primary" type="submit" disabled={!otpRequested}>
                 Signup
               </Button>

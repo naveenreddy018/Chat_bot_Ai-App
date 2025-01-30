@@ -6,7 +6,7 @@ const Profile = () => {
     const [profile, setProfile] = useState('');
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
-    const baseUrl = 'https://render-back-end-7.onrender.com';
+    const baseUrl = 'https://render-back-end-8.onrender.com';
 
     useEffect(() => {
         const token = localStorage.getItem('token');
