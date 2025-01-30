@@ -67,7 +67,7 @@ function Response_Bar() {
   
       const fetchResponse = async () => {
         try {
-          const res = await fetch("http://localhost:3001/prompt", {
+          const res = await fetch("https://render-back-end-7.onrender.com/prompt", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
