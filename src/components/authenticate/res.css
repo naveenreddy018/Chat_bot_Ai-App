@@ -151,7 +151,7 @@
     display: block;
     top:10%;
     left : 40%;
-    height: 100vh;
+    height: 50vh;
 
    } 
 
@@ -175,12 +175,13 @@
   .ml-auto{
     display: flex;
     flex-direction: column;
+    justify-content: center !important;
     gap: 30px;
     position:absolute !important;
-    left: 0px;
+    left: 80px;
     height: 54vh;
-    padding: 50px !important;
-    transition: all 10s ease-in-out;
+    padding:  10px  10px  !important;
+
 
   
     backdrop-filter: blur(30px);
@@ -193,9 +194,15 @@
  
  .dropdown-menu img{
   position: absolute !important;
-  right : 10%;
-  top: 0;
+  right : -800% !important;
+  top: -13px !important;
  }
+ .dropdown-item:nth-child(1){
+  position: absolute !important;
+  top: 30px;
+  right: 10px;
+
+}
   .gemini-name{
     position: relative !important;
     top: 30px;

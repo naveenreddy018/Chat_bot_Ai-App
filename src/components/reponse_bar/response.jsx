@@ -66,6 +66,7 @@ function Response_Bar() {
       const maxRetries = 10;
   
       const fetchResponse = async () => {
+        Array.push(currentPrompt)
         try {
           const res = await fetch("https://render-back-end-7.onrender.com/prompt", {
             method: "POST",
@@ -81,11 +82,14 @@ function Response_Bar() {
   
           const responseData = await res.json();
           setLoading(false);
+          Array.push(currentPrompt)
           setConversation((prev) =>
             prev.map((entry) =>
               entry.prompt === currentPrompt ? { ...entry, response: responseData.response } : entry
             )
+
           );
+          
         } catch (error) {
           console.error("Error:", error.message);
           if (retryCount < maxRetries) {

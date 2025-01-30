@@ -145,6 +145,7 @@ function AppNavbar({ toggleTheme, isDarkMode }) {
             .dropdown-menu {
               display: ${open ? 'block' : 'none'};
             }
+             
 
             /* Mobile nav container */
             .mobile-nav {

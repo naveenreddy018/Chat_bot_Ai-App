@@ -3,16 +3,15 @@ import React, { useState } from "react";
 export const photo = [];
 
 function Settings() {
-  const [activeTab, setActiveTab] = useState("profile"); // Active tab state
+  const [activeTab, setActiveTab] = useState("profile");
   const [username, setUsername] = useState("Naveen Reddy");
   const [email, setEmail] = useState("naveen@example.com");
   const [password, setPassword] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(false); // Theme state
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [emailNotifications, setEmailNotifications] = useState(true);
   const [smsNotifications, setSmsNotifications] = useState(false);
   const [profilePicture, setProfilePicture] = useState(null);
 
-  // Add the profile picture to the photo array
   if (profilePicture && !photo.includes(profilePicture)) {
     photo.push(profilePicture);
   }
@@ -28,81 +27,46 @@ function Settings() {
     switch (activeTab) {
       case "profile":
         return (
-          <div style={styles.tabContent}>
-            <h3 style={styles.sectionTitle}>Profile Settings</h3>
-            <div style={styles.field}>
-              <label style={styles.label}>Username:</label>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                style={styles.input}
-              />
+          <div className="tab-content">
+            <h3>Profile Settings</h3>
+            <div className="field">
+              <label>Username:</label>
+              <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
             </div>
-            <div style={styles.field}>
-              <label style={styles.label}>Email:</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                style={styles.input}
-              />
+            <div className="field">
+              <label>Email:</label>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div style={styles.field}>
-              <label style={styles.label}>Profile Picture:</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleProfilePictureChange}
-                style={styles.input}
-              />
-              {profilePicture && (
-                <img
-                  src={profilePicture}
-                  alt="Profile Preview"
-                  style={styles.profilePicture}
-                />
-              )}
+            <div className="field">
+              <label>Profile Picture:</label>
+              <input type="file" accept="image/*" onChange={handleProfilePictureChange} />
+              {profilePicture && <img src={profilePicture} alt="Profile Preview" className="profile-picture" />}
             </div>
           </div>
         );
       case "security":
         return (
-          <div style={styles.tabContent}>
-            <h3 style={styles.sectionTitle}>Security Settings</h3>
-            <div style={styles.field}>
-              <label style={styles.label}>Change Password:</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter new password"
-                style={styles.input}
-              />
+          <div className="tab-content">
+            <h3>Security Settings</h3>
+            <div className="field">
+              <label>Change Password:</label>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter new password" />
             </div>
           </div>
         );
       case "notifications":
         return (
-          <div style={styles.tabContent}>
-            <h3 style={styles.sectionTitle}>Notification Settings</h3>
-            <div style={styles.field}>
-              <label style={styles.label}>
-                <input
-                  type="checkbox"
-                  checked={emailNotifications}
-                  onChange={() => setEmailNotifications(!emailNotifications)}
-                />
+          <div className="tab-content">
+            <h3>Notification Settings</h3>
+            <div className="field">
+              <label>
+                <input type="checkbox" checked={emailNotifications} onChange={() => setEmailNotifications(!emailNotifications)} />
                 Email Notifications
               </label>
             </div>
-            <div style={styles.field}>
-              <label style={styles.label}>
-                <input
-                  type="checkbox"
-                  checked={smsNotifications}
-                  onChange={() => setSmsNotifications(!smsNotifications)}
-                />
+            <div className="field">
+              <label>
+                <input type="checkbox" checked={smsNotifications} onChange={() => setSmsNotifications(!smsNotifications)} />
                 SMS Notifications
               </label>
             </div>
@@ -110,18 +74,11 @@ function Settings() {
         );
       case "theme":
         return (
-          <div style={styles.tabContent}>
-            <h3 style={styles.sectionTitle}>Theme Settings</h3>
-            <div style={styles.field}>
-              <label style={styles.label}>Theme:</label>
-              <button
-                onClick={() => setIsDarkMode(!isDarkMode)}
-                style={{
-                  ...styles.toggleButton,
-                  backgroundColor: isDarkMode ? "#007bff" : "#f0f0f0",
-                  color: isDarkMode ? "white" : "black",
-                }}
-              >
+          <div className="tab-content">
+            <h3>Theme Settings</h3>
+            <div className="field">
+              <label>Theme:</label>
+              <button onClick={() => setIsDarkMode(!isDarkMode)} className="toggle-button">
                 {isDarkMode ? "Dark Mode" : "Light Mode"}
               </button>
             </div>
@@ -133,149 +90,167 @@ function Settings() {
   };
 
   return (
-    <div
-      style={{
-        ...styles.container,
-        backgroundColor: isDarkMode ? "#000000" : "#ffffff", 
-        color: isDarkMode ? "#ffffff" : "#000000", 
-      }}
-    >
-      <div
-        style={{
-          ...styles.sidebar,
-          backgroundColor: isDarkMode ? "#1f1f1f" : "#f5f5f5", 
-          color: isDarkMode ? "#ffffff" : "#000000",
-        }}
-      >
-        <h2 style={styles.sidebarTitle}>Settings</h2>
-        <ul style={styles.navList}>
-          <li
-            style={
-              activeTab === "profile"
-                ? { ...styles.activeNavItem, backgroundColor: isDarkMode ? "#007bff" : "black" }
-                : styles.navItem
-            }
-            onClick={() => setActiveTab("profile")}
-          >
+    <div className={`settings-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>
+      <div className="sidebar">
+        <h2>Settings</h2>
+        <ul>
+          <li className={activeTab === "profile" ? "active" : ""} onClick={() => setActiveTab("profile")}>
             Profile
           </li>
-          <li
-            style={
-              activeTab === "security"
-                ? { ...styles.activeNavItem, backgroundColor: isDarkMode ? "#007bff" : "black" }
-                : styles.navItem
-            }
-            onClick={() => setActiveTab("security")}
-          >
+          <li className={activeTab === "security" ? "active" : ""} onClick={() => setActiveTab("security")}>
             Security
           </li>
-          <li
-            style={
-              activeTab === "notifications"
-                ? { ...styles.activeNavItem, backgroundColor: isDarkMode ? "#007bff" : "black" }
-                : styles.navItem
-            }
-            onClick={() => setActiveTab("notifications")}
-          >
+          <li className={activeTab === "notifications" ? "active" : ""} onClick={() => setActiveTab("notifications")}>
             Notifications
           </li>
-          <li
-            style={
-              activeTab === "theme"
-                ? { ...styles.activeNavItem, backgroundColor: isDarkMode ? "#007bff" : "black" }
-                : styles.navItem
-            }
-            onClick={() => setActiveTab("theme")}
-          >
+          <li className={activeTab === "theme" ? "active" : ""} onClick={() => setActiveTab("theme")}>
             Theme
           </li>
         </ul>
       </div>
-      <div style={styles.content}>{renderTabContent()}</div>
+      <div className="content">{renderTabContent()}</div>
+
+      <style jsx>{`
+        /* Global styles */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: Arial, sans-serif;
+        }
+
+        body {
+          background-color: #f4f4f4;
+          color: #333;
+          font-size: 16px;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+          background-color: #333;
+          color: #fff;
+        }
+
+        .light-mode {
+          background-color: #fff;
+          color: #333;
+        }
+
+        /* Settings container */
+        .settings-container {
+          display: flex;
+          min-height: 100vh;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 20px;
+        }
+
+        .settings-container .sidebar {
+          width: 250px;
+          background-color: #f1f1f1;
+          padding: 20px;
+          border-radius: 8px;
+          margin-right: 20px;
+        }
+
+        .settings-container .sidebar h2 {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .settings-container .sidebar ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        .settings-container .sidebar ul li {
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 4px;
+          transition: background-color 0.3s;
+        }
+
+        .settings-container .sidebar ul li.active,
+        .settings-container .sidebar ul li:hover {
+          background-color: #007bff;
+          color: red;
+        }
+
+        .settings-container .content {
+          flex-grow: 1;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content {
+          margin-top: 20px;
+        }
+
+        .field {
+          margin-bottom: 20px;
+        }
+
+        .field label {
+          display: block;
+          margin-bottom: 5px;
+        }
+
+        .field input[type="text"],
+        .field input[type="email"],
+        .field input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+        }
+
+        .field input[type="file"] {
+          margin-top: 10px;
+        }
+
+        .profile-picture {
+          margin-top: 10px;
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .toggle-button {
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: black;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+          background-color: #0056b3;
+        }
+
+        @media screen and (max-width: 768px) {
+          .settings-container {
+            flex-direction: column;
+          }
+
+          .settings-container .sidebar {
+            width: 100%;
+            margin-right: 0;
+          }
+
+          .settings-container .content {
+            width: 100%;
+          }
+        }
+      `}</style>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    display: "flex",
-    height: "100vh",
-    width: "100%",
-    fontFamily: "Times", 
-  },
-  sidebar: {
-    width: "250px",
-    padding: "20px",
-    borderRight: "1px solid #ddd",
-  },
-  sidebarTitle: {
-    marginBottom: "20px",
-    fontSize: "18px",
-    fontWeight: "bold",
-  },
-  navList: {
-    listStyle: "none",
-    padding: 0,
-  },
-   navItem: {
-    padding: "10px",
-    cursor: "pointer",
-    borderRadius: "5px",
-    marginBottom: "10px",
-    transition: "background-color 0.9s",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", 
-    border: "1px solid #e0e0e0",
-  },
-  activeNavItem: {
-    padding: "10px",
-    cursor: "pointer",
-    borderRadius: "5px",
-    marginBottom: "10px",
-    color: "#ffffff",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)", 
-    backgroundColor: "#007bff",
-    border: "1px solid #0056b3",
-  },
-  content: {
-    flex: 1,
-    padding: "20px",
-  },
-  tabContent: {
-    maxWidth: "600px",
-    margin: "0 auto",
-  },
-  sectionTitle: {
-    fontSize: "20px",
-    marginBottom: "20px",
-  },
-  field: {
-    marginBottom: "15px",
-  },
-  label: {
-    display: "block",
-    marginBottom: "5px",
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-    fontSize: "16px",
-  },
-  profilePicture: {
-    marginTop: "10px",
-    width: "100px",
-    height: "100px",
-    borderRadius: "50%",
-    objectFit: "cover",
-  },
-  toggleButton: {
-    padding: "10px 20px",
-    borderRadius: "5px",
-    cursor: "pointer",
-    fontSize: "16px",
-    border: "none",
-  },
-};
 
 export default Settings;

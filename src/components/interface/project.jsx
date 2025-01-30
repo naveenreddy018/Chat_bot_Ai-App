@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { assets } from "../../assets/assets";
+import "./project.css"
 
 function AboutGeminiAI() {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -36,7 +37,7 @@ function AboutGeminiAI() {
     <div style={styles.container}>
 
       <div style={styles.videoSection}>
-        <div style={styles.videoList}>
+        <div  className="videoList" style={styles.videoList}>
           {videos.map((video, index) => (
             <div
               key={index}
@@ -53,7 +54,7 @@ function AboutGeminiAI() {
           ))}
         </div>
 
-        <div style={styles.selectedVideoSection}>
+        <div className="selectedVideoSection" style={styles.selectedVideoSection}>
           {selectedVideo ? (
             <div style={styles.selectedVideoContainer}>
               <video
@@ -171,9 +172,10 @@ function AboutGeminiAI() {
       </div>
     </div>
   );
-}
-
-const styles = {
+}const styles = {
+  li : {
+   color: "white",
+  },
   container: {
     display: "flex",
     flexDirection: "column",
@@ -193,10 +195,11 @@ const styles = {
     gap: "30px",
     marginBottom: "30px",
     width: "100%",
+    flexWrap: "wrap", 
   },
   videoList: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column", 
     width: "25%",
     gap: "15px",
   },
@@ -213,10 +216,6 @@ const styles = {
       backgroundColor: "#444",
     },
   },
-  li : {
-    color : "white",
-    fontSize : "1.1rem"
-  },
   videoCardImage: {
     width: "100%",
     height: "auto",
@@ -228,7 +227,7 @@ const styles = {
     },
   },
   videoCardTitle: {
-    fontSize: "16px",
+    fontSize: "1rem",
     color: "#ffa726",
     textAlign: "center",
     transition: "color 0.3s ease",
@@ -326,7 +325,7 @@ const styles = {
     transition: "color 0.3s ease",
     "&:hover": {
       color: "#ffcc80",
-      transform: "scale(1.5)"
+      transform: "scale(1.5)",
     },
   },
   featureCardDescription: {
@@ -337,12 +336,10 @@ const styles = {
 
   "@media (max-width: 1024px)": {
     videoSection: {
-      flexDirection: "column",
+      flexDirection: "column", 
       gap: "20px",
     },
-    videoList: {
-      width: "100%",
-    },
+  
     selectedVideoSection: {
       width: "100%",
     },
@@ -350,41 +347,55 @@ const styles = {
       padding: "15px",
     },
   },
+
   "@media (max-width: 768px)": {
     videoSection: {
       flexDirection: "column",
       gap: "20px",
     },
-    videoList: {
-      width: "100%",
-    },
+  
     featureCardsContainer: {
       justifyContent: "center",
     },
   },
-  "@media (max-width: 425px)": {
-    container: {
-      padding: "15px",
-    },
-    videoSection: {
-      flexDirection: "column",
-      gap: "15px",
-    },
-    featureCardsContainer: {
-      flexDirection: "column",
-      gap: "10px",
-    },
-    heading: {
-      fontSize: "24px",
-    },
-    subHeading: {
-      fontSize: "20px",
-    },
-    description: {
-      fontSize: "14px",
-    },
-  },
-};
 
+  // "@media (max-width: 425px)": {
+  //   container: {
+  //     padding: "5px",
+  //     flexDirection: "column",
+  //     width : "100%",
+  //   },
+
+  //   videoSection: {
+  //     flexDirection: "column",
+  //     width: "100%",
+  //     gap: "15px",
+  //   },
+  //   videoList: {
+  //     width: "1000px",
+  //     gap: "10px", 
+  //     fontSize :"5rem",
+  //   },
+  //   videoCardTitle: {
+  //     fontSize: "8.8rem", 
+  //   },
+  //   featureCardsContainer: {
+  //     flexDirection: "column",
+  //     gap: "10px",
+  //   },
+  //   heading: {
+  //     fontSize: "1rem",
+  //   },
+  //   subHeading: {
+  //     fontSize: "1rem",
+  //   },
+  //   description: {
+  //     fontSize: "0.8rem",
+  //   },
+  //   li : {
+  //     backgroundColor : "white",
+  //   }
+  // },
+};
 
 export default AboutGeminiAI;

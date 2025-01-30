@@ -9,6 +9,9 @@
     font-size: 1.5rem;  
   }
   
+  li{
+    color:  black;
+  }
 
   .help-container h1 {
     font-size:4rem;
@@ -143,6 +146,9 @@
   @media screen and (max-width: 480px) {
     .faq-section h2, .how-to-use h2, .support-call h2 {
       font-size: 1.6rem;
+    }
+    .answer > ul > li{
+      color: #333;
     }
   
     .faq-item .question, .faq-item .answer {
