@@ -147,8 +147,12 @@
     .faq-section h2, .how-to-use h2, .support-call h2 {
       font-size: 1.6rem;
     }
+    li{
+      color: black !important;
+    }
     .answer > ul > li{
-      color: #333;
+      color: black !important;
+      background-color: white ;
     }
   
     .faq-item .question, .faq-item .answer {

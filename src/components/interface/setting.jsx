@@ -92,7 +92,7 @@ function Settings() {
   return (
     <div className={`settings-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <div className="sidebar">
-        <h2>Settings</h2>
+        <h2 style={{color : "black"}}>Settings</h2>
         <ul>
           <li className={activeTab === "profile" ? "active" : ""} onClick={() => setActiveTab("profile")}>
             Profile
@@ -128,7 +128,7 @@ function Settings() {
         /* Dark mode styles */
         .dark-mode {
           background-color: #333;
-          color: #fff;
+          color:black;
         }
 
         .light-mode {
