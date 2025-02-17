@@ -145,7 +145,7 @@ function Response_Bar() {
           <div className="nav-user-icon">
             <ImageComponent
               src={profilePhoto}
-              style={{ width: 40, borderRadius: "50%" }}
+              style={{ width: 40, borderRadius: "50%",cursor :"pointer" }}
               onClick={() => setUserModalBody((prev) => !prev)}
             />
           </div>

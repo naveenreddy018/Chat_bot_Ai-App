@@ -172,8 +172,8 @@ function Settings() {
 
         .settings-container .sidebar ul li.active,
         .settings-container .sidebar ul li:hover {
-          background-color: #007bff;
-          color: red;
+          background-color:skyblue;
+          color: white;
         }
 
         .settings-container .content {

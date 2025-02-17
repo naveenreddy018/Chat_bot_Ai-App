@@ -18,7 +18,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 }
-
+.top:hover{
+cursor: pointer;
+}
 .menu-name {
   padding: 20px;
 }
@@ -63,14 +65,16 @@
 
 .bottom-entry-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 7vh;
   font-weight: 600;
   padding: 8px 10px;
   border-radius: 8px;
+  gap: 30px;
   cursor: pointer;
+  font-size: 2rem;
   transition: background-color 0.3s ease;
 }
 /* 
@@ -78,7 +82,7 @@
   background-color: #dcdcdc;
 } */
 .recent-history p{
-  background-color:gray;
+  background-color:black;
   color: #fff;
   padding: 10px 25px;
   border-radius: 8px;

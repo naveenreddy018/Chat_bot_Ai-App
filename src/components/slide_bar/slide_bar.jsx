@@ -106,7 +106,7 @@ function Slide_Bar() {
             }}
             title = "Click on Hamburger to access"
           />
-            {menu && <Link to="/Help">Help</Link>}
+            {menu && <Link style={{fontSize: "1.2rem"}} to="/Help">Help</Link>}
         </div>
         <div className='bottom-entry-item'>
           <ImageComponent
@@ -116,7 +116,7 @@ function Slide_Bar() {
             }}
                  title = "Click on Hamburger to access"
           />
-          {menu && <Link to="/settings">Settings</Link>}
+          {menu && <Link style={{fontSize: "1.2rem"}} to="/settings">Settings</Link>}
         </div>
       </div>
     </div>

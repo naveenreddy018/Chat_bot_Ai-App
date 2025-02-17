@@ -45,8 +45,8 @@ function FormModal({ name }) {
 
           <Modal.Body>
             <Form className="form-container" onSubmit={handleSubmit}>
-              <div className="user-icon">
-                <ImageComponent src={photo && photo.length > 0 ? photo[photo.length - 1] : assets.user_icon}  />
+              <div  className="user-icon">
+                <ImageComponent  src={photo && photo.length > 0 ? photo[photo.length - 1] : assets.user_icon}  />
               </div>
 
               <Form.Group className="mb-3">
