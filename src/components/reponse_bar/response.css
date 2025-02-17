@@ -4,7 +4,15 @@
     flex-grow: 1;
     min-height: 100vh;
 }
-
+.hello{
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    justify-content: flex-end;
+}
+.you{
+    font-size: 1.2rem;
+}
 .header {
     display: flex;
     justify-content: space-between;

@@ -159,8 +159,8 @@ function Response_Bar() {
             {conversation.map((entry, index) => (
               <div key={index} className="message">
                 <div className="prompt-display">
-                  <p style={{ fontSize: "1.2rem" }}>
-                    <strong>You:</strong> {entry.prompt}
+                  <p className="hello" style={{ fontSize: "1.2rem" }}>
+                    <strong className="you">You :</strong> {entry.prompt}
                   </p>
                 </div>
                 {entry.response ? (

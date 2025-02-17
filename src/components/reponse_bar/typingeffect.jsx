@@ -29,7 +29,7 @@ const TypingEffect = ({ text, delay, query}) => {
 
   return (
 
-    <div style={{color : "black",fontSize : "1.1rem"}} >{displayText.replaceAll("*","")}</div>
+    <div style={{color : "black",fontSize : "1.1rem"}} >{displayText.replaceAll("*"," ")}</div>
 
   );
 };
