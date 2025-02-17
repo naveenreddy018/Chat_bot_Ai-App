@@ -212,18 +212,36 @@ function Response_Bar() {
 
       <div className="footer">
         <div className="input-bar">
-          <input
-            type="text"
-            style={{ backgroundColor: toggle ? "black" : "white", color: toggle ? "white" : "black" }}
-            onChange={(e) => setPrompt(e.target.value)}
-            value={prompt}
-            placeholder="Enter your prompt"
-          />
+        <input
+  type="text"
+  style={{ backgroundColor: toggle ? "black" : "white", color: toggle ? "white" : "black" }}
+  onChange={(e) => setPrompt(e.target.value)}
+  value={prompt}
+  placeholder="Enter your prompt"
+  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); 
+      handleSend(prompt);
+    } else if (e.key === "Escape") {
+      setPrompt(""); 
+    }
+  }}
+/>
+
         </div>
         <div className="additonal-icons">
-          <div className="send-icon">
-            <ImageComponent src={assets.send_icon} style={{ width: 30 }} onClick={() => handleSend(prompt)} />
-          </div>
+        <div className="send-icon">
+  {requestInProgress ? (
+    <div className="spinner"></div> 
+  ) : (
+    <ImageComponent
+      src={assets.send_icon}
+      style={{ width: 30, cursor: "pointer" }}
+      onClick={() => handleSend(prompt)}
+    />
+  )}
+</div>
+
         </div>
       </div>
     </div>

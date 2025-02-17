@@ -9,6 +9,7 @@ import AboutGeminiAI from '../interface/project';
 import Help from '../interface/Help';
 import Hello from '../main/Hello';
 import Home from "../interface/Home";
+import zIndex from '@mui/material/styles/zIndex';
 
 function App3() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -182,6 +183,7 @@ const styles = {
     maxHeight: '100vh',
     backgroundColor: '#000000',
     color: '#000',
+    zIndex : "1000"
   },
 
   appContainerDark: {
@@ -195,13 +197,15 @@ const styles = {
   navbar: {
     marginBottom: '20px',
     padding: '10px 20px',
-    backgroundColor: '#000',
+    // backgroundColor: '#000',
     color: 'white',
   },
 
   Container: {
     padding: '0px',
     width: "100%",
+
+
   },
 
   navContainer: {
@@ -213,7 +217,7 @@ const styles = {
     fontWeight: 'bold',
     padding: '60px 0px',
     position: 'relative',
-    top: '20px',
+    top: '60px',
     left: '40px',
   },
 

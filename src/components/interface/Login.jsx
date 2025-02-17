@@ -9,6 +9,7 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loginmessage, setloginmessage] = useState(""); 
+    const [guestlogin,setguest] = useState("")
 
 
     const navigate = useNavigate();
@@ -68,14 +69,18 @@ const Login = () => {
     };
 
     const handleGuestLogin = () => {
+        setguest("Login successful!  as guest Redirecting...")
         Username.push("guest");
+     setTimeout(() => {
         navigate('/auth'); 
+     }, 2000);
     };
 
     const handleRegisterRedirect = () => {
         navigate("/register");  
     };
 
+   
     return (
         <div style={styles.container}>
             <form id="login" onSubmit={handleSubmit} style={styles.form}>
@@ -112,6 +117,7 @@ const Login = () => {
 
             <div style={styles.guestLoginContainer}>
                 <p style={styles.pTag}>Login as Guest:</p>
+                {guestlogin && <Appa action={guestlogin} />}
                 <button onClick={handleGuestLogin} style={styles.guestButton}>Guest User</button>
             </div>
         </div>
