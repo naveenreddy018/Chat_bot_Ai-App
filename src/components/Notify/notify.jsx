@@ -8,7 +8,6 @@ import { ToastContainer, toast } from 'react-toastify';
     const {action} = props
     console.log(action)
     const notify = (action) => {
-      // Correct way to add inline style for color
       toast(action, {
         style: { color: 'green',  background: 'linear-gradient(to right, #e0f7fa, #b2ebf2)', },  // Inline style for text color
       });
